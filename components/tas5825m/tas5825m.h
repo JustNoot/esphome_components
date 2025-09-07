@@ -1,6 +1,7 @@
 #pragma once
 
 #include "esphome/components/audio_dac/audio_dac.h"
+#include "esphome/components/sensor/sensor.h"
 #include "esphome/components/i2c/i2c.h"
 #include "esphome/core/component.h"
 
@@ -38,6 +39,8 @@ class TAS5825M : public audio_dac::AudioDac, public Component, public i2c::I2CDe
   bool set_mute_on() override { return this->set_mute_state_(true); }
 
   bool is_muted() override { return this->is_muted_; }
+
+  float supply_voltage();
 
  protected:
   /// @brief Mutes or unmutes the DAC audio out
